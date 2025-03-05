@@ -1,0 +1,57 @@
+<h2 class="text-muted p-2">Inventory Tracker</h2>
+
+<div class="inventory-tracker p-3">
+  <div class="d-flex">
+    <table class="table table-hover w-100">
+      <thead>
+        <tr>
+          <th scope="col" class="col-1">#</th>
+          <th scope="col" class="col-2">Category</th>
+          <th scope="col" class="">Name</th>
+          <th scope="col" class="">Detail</th>
+          <th scope="col" class="col-2">Value (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model as |item index|}}
+          <tr>
+            <th class="text-muted fw-light">{{index}}</th>
+            <td class="text-capitalize">
+              <FaIcon @icon={{item.itemDetail.icon}} class="me-1"/> {{item.category}}
+            </td>
+            <td>
+              {{item.name}}
+            </td>
+            <td class="text-capitalize">{{item.itemDetail.detail}}</td>
+            <td>{{item.currencyDisplay}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="inventory-buttons">
+    <BsButton
+      @type="primary"
+      @onClick={{fn (mut this.showAddModal) true}}
+    >
+      Add Item
+    </BsButton>
+  </div>
+</div>
+
+{{#if this.showAddModal}}
+<BsModal
+  @onSubmit={{this.submitNewItem}}
+  @onHide={{fn (mut this.showAddModal) false}}
+  as |modal|>
+  <modal.header>
+    <h5 class="modal-title">New Item</h5>
+  </modal.header>
+  <modal.body>
+  </modal.body>
+  <modal.footer>
+    <BsButton @onClick={{modal.close}}>Cancel</BsButton>
+    <BsButton @onClick={{modal.submit}} @type="primary">Submit</BsButton>
+  </modal.footer>
+  </BsModal>
+{{/if}}

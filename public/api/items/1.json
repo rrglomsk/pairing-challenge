@@ -1,0 +1,15 @@
+{
+  "data": {
+    {
+      "type": "item",
+      "id": 1,
+      "attributes": {
+        "type": "jewelry",
+        "name": "Necklace",
+        "material": "Diamond",
+        "value": 300.00,
+        "lastModified": "March 1 2025 7:00"
+      }
+    }
+  }
+}

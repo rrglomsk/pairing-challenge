@@ -1,0 +1,85 @@
+{
+  "data": [
+    {
+      "type": "item",
+      "id": "1",
+      "attributes": {
+        "category": "jewelry",
+        "name": "Necklace",
+        "material": "Diamond",
+        "value": 300.00,
+        "lastModified": "March 1 2025 7:00"
+      },
+      "relationships": {
+        "itemDetail": {
+          "data": {
+            "id": "4",
+            "type": "item-detail-jewelry"
+          }
+        }
+      }
+    },
+    {
+      "type": "item",
+      "id": "2",
+      "attributes": {
+        "category": "jewelry",
+        "name": "Bracelet",
+        "material": "Gold",
+        "value": 215.00,
+        "lastModified": "March 2 2025 12:00"
+      },
+      "relationships": {
+        "itemDetail": {
+          "data": {
+            "id": "5",
+            "type": "item-detail-jewelry"
+          }
+        }
+      }
+    },
+    {
+      "type": "item",
+      "id": "3",
+      "attributes": {
+        "category": "electronic",
+        "name": "4k TV",
+        "serialNumber": "A1256889022",
+        "value": 500.00,
+        "lastModified": "March 2 2025 16:00"
+      },
+      "relationships": {
+        "itemDetail": {
+          "data": {
+            "id": "6",
+            "type": "item-detail-electronic"
+          }
+        }
+      }
+    }
+  ],
+
+  "included": [
+    {
+      "id": "4",
+      "type": "item-detail-jewelry",
+      "attributes": {
+        "material": "diamond"
+      }
+    },
+    {
+      "id": "5",
+      "type": "item-detail-jewelry",
+      "attributes": {
+        "material": "gold"
+      }
+    },
+    {
+      "id": "6",
+      "type": "item-detail-electronic",
+      "attributes": {
+        "serialNumber": "A1256889022"
+      }
+    }
+  ]
+}
