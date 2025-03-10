@@ -4546,6 +4546,22 @@ ember-cli-typescript@^4.1.0:
     stagehand "^1.0.0"
     walk-sync "^2.2.0"
 
+ember-cli-typescript@^5.0.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-5.3.0.tgz#c0f726c61e4309aa9ff49b388219c6729ea986cd"
+  integrity sha512-gFA+ZwmsvvFwo2Jz/B9GMduEn+fPoGb69qWGP0Tp3+Tu5xypDtIKVSZ5086I3Cr19cLXD4HkrOR3YQvdUKzAkQ==
+  dependencies:
+    ansi-to-html "^0.6.15"
+    broccoli-stew "^3.0.0"
+    debug "^4.0.0"
+    execa "^4.0.0"
+    fs-extra "^9.0.1"
+    resolve "^1.5.0"
+    rsvp "^4.8.1"
+    semver "^7.3.2"
+    stagehand "^1.0.0"
+    walk-sync "^2.2.0"
+
 ember-cli-version-checker@^2.1.0, ember-cli-version-checker@^2.1.2:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/ember-cli-version-checker/-/ember-cli-version-checker-2.2.0.tgz#47771b731fe0962705e27c8199a9e3825709f3b3"
@@ -4760,6 +4776,15 @@ ember-focus-trap@^1.0.0:
   dependencies:
     "@embroider/addon-shim" "^1.0.0"
     focus-trap "^6.7.1"
+
+ember-functions-as-helper-polyfill@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ember-functions-as-helper-polyfill/-/ember-functions-as-helper-polyfill-2.1.2.tgz#5f7a7c7f87b87d4df785c53d1ee0810693c89b6b"
+  integrity sha512-yvW6xykvZEIYzzwlrC/g9yu6LtLkkj5F+ho6U+BDxN1uREMgoMOZnji7sSILn5ITVpaJ055DPcO+utEFD7IZOA==
+  dependencies:
+    ember-cli-babel "^7.26.11"
+    ember-cli-typescript "^5.0.0"
+    ember-cli-version-checker "^5.1.2"
 
 ember-load-initializers@^3.0.1:
   version "3.0.1"
@@ -4990,6 +5015,14 @@ ember-tracked-storage-polyfill@^1.0.0:
   dependencies:
     ember-cli-babel "^7.26.3"
     ember-cli-htmlbars "^5.7.1"
+
+ember-truth-helpers@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-4.0.3.tgz#02705dc36f2d68f1d4cff0d8226396c8ae5dee2e"
+  integrity sha512-T6Ogd3pk9FxYiZfSxdjgn3Hb3Ksqgw7CD23V9qfig9jktNdkNEHo4+3PA3cSD/+3a2kdH3KmNvKyarVuzdtEkA==
+  dependencies:
+    "@embroider/addon-shim" "^1.8.6"
+    ember-functions-as-helper-polyfill "^2.1.2"
 
 ember-welcome-page@^7.0.2:
   version "7.0.2"

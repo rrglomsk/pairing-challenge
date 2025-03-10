@@ -32,7 +32,7 @@
   <div class="inventory-buttons">
     <BsButton
       @type="primary"
-      @onClick={{fn (mut this.showAddModal) true}}
+      @onClick={{this.createNewItem}}
     >
       Add Item
     </BsButton>
@@ -42,16 +42,39 @@
 {{#if this.showAddModal}}
 <BsModal
   @onSubmit={{this.submitNewItem}}
-  @onHide={{fn (mut this.showAddModal) false}}
+  @onHide={{this.closeModal}}
+  @model={{this.selectedItem}}
   as |modal|>
+  <BsForm as |form|>
   <modal.header>
     <h5 class="modal-title">New Item</h5>
   </modal.header>
   <modal.body>
+    <form.element @controlType='text' @label='Name' @property="category" />
+    <form.element @controlType='text' @label='Value' @property="value" />
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <BsButtonGroup @value={{this.selectedItem.category}} @type="radio" class="border w-100" @onChange={{this.createNewDetails}} as |bg|>
+        <bg.button @type="light" @value='jewelry'>Jewelry</bg.button>
+        <bg.button @type="light" @value='electronic'>Electronic</bg.button>
+        <bg.button @type="light" @value='other'>Other</bg.button>
+      </BsButtonGroup>
+    </div>
+
+    {{#if this.selectedItem.itemDetail}}
+      {{log this.selectedItem.itemDetail}}
+      {{#if (eq this.selectedItem.category 'jewelry')}}
+        <form.element @controlType='text' @label='Material' @value={{this.selectedItem.itemDetail.material}} @onChange={{fn (mut this.selectedItem.itemDetail.material)}}/>
+      {{else if (eq this.selectedItem.category 'electronic')}}
+        <form.element @controlType='text' @label='Serial Number' @value={{this.selectedItem.itemDetail.serialNumber}} @onChange={{fn (mut this.selectedItem.itemDetail.serialNumber)}}/>
+      {{/if}}
+    {{/if}}
+
   </modal.body>
   <modal.footer>
     <BsButton @onClick={{modal.close}}>Cancel</BsButton>
-    <BsButton @onClick={{modal.submit}} @type="primary">Submit</BsButton>
+    <form.submitButton @onClick={{modal.submit}} @type="primary">Submit</form.submitButton>
   </modal.footer>
+  </BsForm>
   </BsModal>
 {{/if}}

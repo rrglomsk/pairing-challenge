@@ -11,5 +11,9 @@ export default class Electronic extends ItemDetail {
   get icon() {
     return 'bolt';
   }
+
+  get detail() {
+    return `Serial Number - ${this.serialNumber}`;
+  }
 }
 

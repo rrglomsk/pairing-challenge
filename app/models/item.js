@@ -1,7 +1,7 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class Item extends Model {
-  @attr('string', { defaultValue: 'Other' }) category;
+  @attr('string') category;
   @attr('string', { defaultName: 'New Item' }) name;
   @attr('number', { defaultValue: 0 }) value;
   @attr('date', { defaultValue: new Date() }) lastModified;

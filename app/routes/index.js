@@ -7,7 +7,6 @@ export default class IndexRoute extends Route {
 
   async model() {
     const { content } = await this.store.request(query('item'));
-    console.log(content.data);
-    return content.data;
+    return this.store.peekAll('item');
   }
 }
