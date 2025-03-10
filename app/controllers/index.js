@@ -10,6 +10,10 @@ export default class IndexController extends Controller {
   @tracked showAddModal = false;
   @tracked selectedItem;
 
+  get items() {
+    return this.model;
+  }
+
   @action
   submitNewItem() {
     this.showAddModal = false;

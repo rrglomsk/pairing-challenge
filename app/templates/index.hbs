@@ -7,13 +7,13 @@
         <tr>
           <th scope="col" class="col-1">#</th>
           <th scope="col" class="col-2">Category</th>
-          <th scope="col" class="">Name</th>
+          <th scope="col" class="col-3">Name</th>
+          <th scope="col" class="">Value (USD)</th>
           <th scope="col" class="">Detail</th>
-          <th scope="col" class="col-2">Value (USD)</th>
         </tr>
       </thead>
       <tbody>
-        {{#each this.model as |item index|}}
+        {{#each this.items as |item index|}}
           <tr>
             <th class="text-muted fw-light">{{index}}</th>
             <td class="text-capitalize">
@@ -22,8 +22,8 @@
             <td>
               {{item.name}}
             </td>
-            <td class="text-capitalize">{{item.itemDetail.detail}}</td>
             <td>{{item.currencyDisplay}}</td>
+            <td class="text-capitalize">{{item.itemDetail.detail}}</td>
           </tr>
         {{/each}}
       </tbody>
@@ -42,16 +42,15 @@
 {{#if this.showAddModal}}
 <BsModal
   @onSubmit={{this.submitNewItem}}
-  @onHide={{this.closeModal}}
-  @model={{this.selectedItem}}
+  @onHide={{this.cancelItem}}
   as |modal|>
   <BsForm as |form|>
   <modal.header>
     <h5 class="modal-title">New Item</h5>
   </modal.header>
   <modal.body>
-    <form.element @controlType='text' @label='Name' @property="category" />
-    <form.element @controlType='text' @label='Value' @property="value" />
+    <form.element @controlType='text' @label='Name' @value={{this.selectedItem.name}} @onChange={{fn (mut this.selectedItem.name)}} />
+    <form.element @controlType='text' @label='Value' @value={{this.selectedItem.value}} @onChange={{fn (mut this.selectedItem.value)}} />
     <div class="mb-3">
       <label class="form-label">Category</label>
       <BsButtonGroup @value={{this.selectedItem.category}} @type="radio" class="border w-100" @onChange={{this.createNewDetails}} as |bg|>
