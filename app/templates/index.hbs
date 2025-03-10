@@ -2,7 +2,7 @@
 
 <div class="inventory-tracker p-3">
   <div class="d-flex">
-    <table class="table table-hover w-100">
+    <table class="inventory-table table table-hover w-100">
       <thead>
         <tr>
           <th scope="col" class="col-1">#</th>
@@ -31,6 +31,7 @@
   </div>
   <div class="inventory-buttons">
     <BsButton
+      class="add-item-button"
       @type="primary"
       @onClick={{this.createNewItem}}
     >
@@ -41,6 +42,7 @@
 
 {{#if this.showAddModal}}
 <BsModal
+  class="add-item-modal"
   @onSubmit={{this.submitNewItem}}
   @onHide={{this.cancelItem}}
   as |modal|>
@@ -49,11 +51,11 @@
     <h5 class="modal-title">New Item</h5>
   </modal.header>
   <modal.body>
-    <form.element @controlType='text' @label='Name' @value={{this.selectedItem.name}} @onChange={{fn (mut this.selectedItem.name)}} />
-    <form.element @controlType='text' @label='Value' @value={{this.selectedItem.value}} @onChange={{fn (mut this.selectedItem.value)}} />
+    <form.element class="name-input" @controlType='text' @label='Name' @value={{this.selectedItem.name}} @onChange={{fn (mut this.selectedItem.name)}} />
+    <form.element class="value-input" @controlType='text' @label='Value' @value={{this.selectedItem.value}} @onChange={{fn (mut this.selectedItem.value)}} />
     <div class="mb-3">
       <label class="form-label">Category</label>
-      <BsButtonGroup @value={{this.selectedItem.category}} @type="radio" class="border w-100" @onChange={{this.createNewDetails}} as |bg|>
+      <BsButtonGroup @value={{this.selectedItem.category}} @type="radio" class="category-select border w-100" @onChange={{this.createNewDetails}} as |bg|>
         <bg.button @type="light" @value='jewelry'>Jewelry</bg.button>
         <bg.button @type="light" @value='electronic'>Electronic</bg.button>
         <bg.button @type="light" @value='other'>Other</bg.button>
@@ -63,16 +65,16 @@
     {{#if this.selectedItem.itemDetail}}
       {{log this.selectedItem.itemDetail}}
       {{#if (eq this.selectedItem.category 'jewelry')}}
-        <form.element @controlType='text' @label='Material' @value={{this.selectedItem.itemDetail.material}} @onChange={{fn (mut this.selectedItem.itemDetail.material)}}/>
+        <form.element class="material-input" @controlType='text' @label='Material' @value={{this.selectedItem.itemDetail.material}} @onChange={{fn (mut this.selectedItem.itemDetail.material)}}/>
       {{else if (eq this.selectedItem.category 'electronic')}}
-        <form.element @controlType='text' @label='Serial Number' @value={{this.selectedItem.itemDetail.serialNumber}} @onChange={{fn (mut this.selectedItem.itemDetail.serialNumber)}}/>
+        <form.element class= "serial-number-input" @controlType='text' @label='Serial Number' @value={{this.selectedItem.itemDetail.serialNumber}} @onChange={{fn (mut this.selectedItem.itemDetail.serialNumber)}}/>
       {{/if}}
     {{/if}}
 
   </modal.body>
   <modal.footer>
     <BsButton @onClick={{modal.close}}>Cancel</BsButton>
-    <form.submitButton @onClick={{modal.submit}} @type="primary">Submit</form.submitButton>
+    <form.submitButton class="submit-button" @onClick={{modal.submit}} @type="primary">Submit</form.submitButton>
   </modal.footer>
   </BsForm>
   </BsModal>
