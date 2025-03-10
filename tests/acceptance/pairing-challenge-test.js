@@ -24,4 +24,15 @@ module('Acceptance | pairing challenge', function (hooks) {
 
     assert.dom('.inventory-table tbody tr:last-child').containsText('Autographed Photo');
   });
+
+  test('removes the new item if you click cancel on the add modal', async function (assert) {
+    await visit('/');
+    assert.dom('.inventory-table tbody tr:last-child').containsText('4k TV');
+
+    await click('.add-item-button');
+    await fillIn('.name-input input', 'Autographed Photo');
+    await click('.cancel-button');
+
+    assert.dom('.inventory-table tbody tr:last-child').containsText('4k TV');
+  });
 });
