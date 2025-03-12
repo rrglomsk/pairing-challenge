@@ -4,7 +4,7 @@ export default class Item extends Model {
   @attr('string') category;
   @attr('string', { defaultName: 'New Item' }) name;
   @attr('number', { defaultValue: 0 }) value;
-  @attr('date', { defaultValue: new Date() }) lastModified;
+  @attr('date', { defaultValue() { return new Date(); }}) lastModified;
 
   @belongsTo('item-detail', { polymorphic: true, async: false, inverse: 'item' }) itemDetail;
 
