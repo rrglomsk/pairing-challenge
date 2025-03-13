@@ -10,6 +10,8 @@
           <th scope="col" class="col-3">Name</th>
           <th scope="col" class="">Value (USD)</th>
           <th scope="col" class="">Detail</th>
+          <th scope="col" class="">Last Updated Time</th>
+          <th scope="col" class="">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -24,12 +26,17 @@
             </td>
             <td>{{item.currencyDisplay}}</td>
             <td class="text-capitalize">{{item.itemDetail.detail}}</td>
+            <td class="text-capitalize">{{item.lastModified}}</td>
+            <td>
+              <FaIcon style="cursor: pointer;" @icon="edit" {{on "click" (fn this.editItem item index)}}/>
+              <FaIcon style="cursor: pointer;" class="ms-3" @icon="trash" {{on "click" (fn this.deleteItem item)}}/>
+            </td>
           </tr>
         {{/each}}
       </tbody>
     </table>
   </div>
-  <div class="inventory-buttons">
+  <div class="inventory-buttons d-flex justify-content-between">
     <BsButton
       class="add-item-button"
       @type="primary"
@@ -37,6 +44,7 @@
     >
       Add Item
     </BsButton>
+    <p style="margin-right: 60px; font-weight: bold;">Total : {{this.total}}</p>
   </div>
 </div>
 
@@ -48,7 +56,13 @@
   as |modal|>
   <BsForm as |form|>
   <modal.header>
-    <h5 class="modal-title">New Item</h5>
+    <h5 class="modal-title">
+      {{#if (eq this.selectedIndex null)}}
+        New Item
+      {{else}}
+        Edit Item
+      {{/if}}
+    </h5>
   </modal.header>
   <modal.body>
     <form.element class="name-input" @controlType='text' @label='Name' @value={{this.selectedItem.name}} @onChange={{fn (mut this.selectedItem.name)}} />
@@ -68,6 +82,8 @@
         <form.element class="material-input" @controlType='text' @label='Material' @value={{this.selectedItem.itemDetail.material}} @onChange={{fn (mut this.selectedItem.itemDetail.material)}}/>
       {{else if (eq this.selectedItem.category 'electronic')}}
         <form.element class= "serial-number-input" @controlType='text' @label='Serial Number' @value={{this.selectedItem.itemDetail.serialNumber}} @onChange={{fn (mut this.selectedItem.itemDetail.serialNumber)}}/>
+      {{else}}
+        <form.element class= "serial-number-input" @controlType='text' @label='Detail' @value={{this.selectedItem.itemDetail.detail}} @onChange={{fn (mut this.selectedItem.itemDetail.detail)}}/>
       {{/if}}
     {{/if}}
 
