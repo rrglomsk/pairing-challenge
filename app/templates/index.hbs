@@ -28,15 +28,15 @@
             <td class="text-capitalize">{{item.itemDetail.detail}}</td>
             <td class="text-capitalize">{{item.lastModified}}</td>
             <td>
-              <FaIcon @icon="edit" {{on "click" (fn this.editItem item)}}/>
-              <FaIcon @icon="trash" {{on "click" (fn this.deleteItem item)}}/>
+              <FaIcon style="cursor: pointer;" @icon="edit" {{on "click" (fn this.editItem item index)}}/>
+              <FaIcon style="cursor: pointer;" class="ms-3" @icon="trash" {{on "click" (fn this.deleteItem item)}}/>
             </td>
           </tr>
         {{/each}}
       </tbody>
     </table>
   </div>
-  <div class="inventory-buttons">
+  <div class="inventory-buttons d-flex justify-content-between">
     <BsButton
       class="add-item-button"
       @type="primary"
@@ -44,7 +44,7 @@
     >
       Add Item
     </BsButton>
-    <p>{{this.total}}</p>
+    <p style="margin-right: 60px; font-weight: bold;">Total : {{this.total}}</p>
   </div>
 </div>
 
